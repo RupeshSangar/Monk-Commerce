@@ -13,7 +13,9 @@ import {
 
 const ProductPickerModal = ({ visible, onClose, index }) => {
   const dispatch = useDispatch();
-  const { items, searchTerm, status, selectedProducts } = useSelector((state) => state.products);
+  const { items, searchTerm, status, selectedProducts } = useSelector(
+    (state) => state.products
+  );
   const [selectedItems, setSelectedItems] = useState([]);
   const [selectedVariants, setSelectedVariants] = useState({});
 
@@ -25,11 +27,11 @@ const ProductPickerModal = ({ visible, onClose, index }) => {
       if (currentProduct) {
         setSelectedItems([currentProduct.id]);
         setSelectedVariants({
-          [currentProduct.id]: currentProduct.selectedVariants || []
+          [currentProduct.id]: currentProduct.selectedVariants || [],
         });
       }
     }
-  }, [visible, dispatch]);
+  }, [visible, dispatch, index, searchTerm, selectedProducts]);
 
   const handleSelectItem = (itemId) => {
     const item = items.find((item) => item.id === itemId);
@@ -41,17 +43,17 @@ const ProductPickerModal = ({ visible, onClose, index }) => {
     } else {
       setSelectedItems([itemId]);
       setSelectedVariants({
-        [itemId]: item.variants?.map(v => v.id) || []
+        [itemId]: item.variants?.map((v) => v.id) || [],
       });
     }
   };
 
   const handleSelectVariant = (itemId, variantId) => {
-    setSelectedVariants(prev => ({
+    setSelectedVariants((prev) => ({
       ...prev,
       [itemId]: prev[itemId]?.includes(variantId)
-        ? prev[itemId].filter(id => id !== variantId)
-        : [...(prev[itemId] || []), variantId]
+        ? prev[itemId].filter((id) => id !== variantId)
+        : [...(prev[itemId] || []), variantId],
     }));
   };
 
@@ -61,11 +63,11 @@ const ProductPickerModal = ({ visible, onClose, index }) => {
   };
 
   const handleSave = () => {
-    const selectedProduct = items.find(item => item.id === selectedItems[0]);
+    const selectedProduct = items.find((item) => item.id === selectedItems[0]);
     if (selectedProduct) {
       const productWithVariants = {
         ...selectedProduct,
-        selectedVariants: selectedVariants[selectedProduct.id] || []
+        selectedVariants: selectedVariants[selectedProduct.id] || [],
       };
       dispatch(updateProductAtIndex({ index, product: productWithVariants }));
     }
@@ -90,7 +92,7 @@ const ProductPickerModal = ({ visible, onClose, index }) => {
           <p>Select Products</p>
           <img src={closeIcon} alt="close icon" onClick={onClose} />
         </div>
-        
+
         <div className={styles.modalSearchDiv}>
           <Input
             prefix={<SearchOutlined />}
@@ -122,21 +124,26 @@ const ProductPickerModal = ({ visible, onClose, index }) => {
                   </div>
                 </Checkbox>
 
-                {selectedItems.includes(item.id) && item.variants?.length > 0 && (
-                  <div className={styles.variantList}>
-                    {item.variants.map((variant) => (
-                      <div key={variant.id} className={styles.variantContent}>
-                        <Checkbox
-                          checked={selectedVariants[item.id]?.includes(variant.id)}
-                          onChange={() => handleSelectVariant(item.id, variant.id)}
-                        >
-                          <p>{variant.title}</p>
-                        </Checkbox>
-                        <p>${variant.price}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                {selectedItems.includes(item.id) &&
+                  item.variants?.length > 0 && (
+                    <div className={styles.variantList}>
+                      {item.variants.map((variant) => (
+                        <div key={variant.id} className={styles.variantContent}>
+                          <Checkbox
+                            checked={selectedVariants[item.id]?.includes(
+                              variant.id
+                            )}
+                            onChange={() =>
+                              handleSelectVariant(item.id, variant.id)
+                            }
+                          >
+                            <p>{variant.title}</p>
+                          </Checkbox>
+                          <p>${variant.price}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
               </div>
             ))
           )}
@@ -147,7 +154,10 @@ const ProductPickerModal = ({ visible, onClose, index }) => {
             {selectedItems.length} product selected
           </p>
           <div className={styles.modalFooterButtonDiv}>
-            <button className={styles.modalFooterButtonCancel} onClick={onClose}>
+            <button
+              className={styles.modalFooterButtonCancel}
+              onClick={onClose}
+            >
               Cancel
             </button>
             <button

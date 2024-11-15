@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import {
   updateProductAtIndex,
-  reorderVariants,
 } from "../redux/features/productsSlice";
 
 const ProductList = ({ index, moveItem, removeItem }) => {
