@@ -1,0 +1,188 @@
+.mainContainer {
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid #d1d1d1;
+}
+
+.mainContainer img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+}
+
+.header {
+  font-size: 20px;
+  color: #7e8185;
+}
+
+.addProductContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.addProductsBox {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 20px;
+  color: #202223;
+  margin-bottom: 1rem;
+}
+
+.titleDiv {
+  display: flex;
+  justify-content: space-around;
+}
+
+.titleDiv p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.productItem {
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 1rem; */
+  gap: 10px;
+  padding: 10px;
+}
+
+.allProducts {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.variantItem {
+  margin-bottom: 0rem;
+}
+
+.productVariantDiv {
+  display: flex;
+  justify-content: flex-end;
+  /* padding-right: 2rem; */
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.discountFields {
+  display: flex;
+  gap: 20px;
+}
+
+.discountInput {
+  width: 60px;
+  height: 36px;
+  border: 1px solid #0000001a;
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  padding: 0px 10px;
+}
+.discountSelect {
+  width: 95px;
+  height: 36px;
+  border: 1px solid #0000001a;
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  font-size: 16px;
+}
+
+/* variants fields */
+.variantsDiscountFields {
+  border-radius: 30px;
+  gap: 10px;
+}
+.variantsDiscountInput {
+  border-radius: 30px;
+}
+
+.variantsDiscountSelect {
+  border-radius: 30px;
+  padding: 0px 10px;
+}
+
+.showVariantsBtn {
+  border: none;
+  color: #006eff;
+  font-size: 16px;
+  border-bottom: 1px solid #006eff;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dragHandle {
+  /* cursor: move; */
+  cursor: grab;
+}
+
+.index {
+  margin: 10px;
+}
+.productInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.productInput {
+  font-size: 16px;
+  flex: 1;
+  padding: 0.7rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  margin-right: 10px;
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  color: #000000;
+  opacity: 0.6;
+  background: white;
+}
+
+.variantsProductInput {
+  border-radius: 30px;
+  box-shadow: 0px 2px 4px 0px #0000001a;
+  margin-right: 0px;
+}
+.editIcon {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  color: #8c8c8c;
+}
+
+.addDiscountBtn {
+  padding: 0.5rem 1rem;
+  background-color: #008060;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.addDiscountBtn:hover {
+  background-color: #006647;
+}
+
+.addProductBtn {
+  padding: 1rem 3rem;
+  border-radius: 4px;
+  border: 2px solid #008060;
+  background-color: transparent;
+  color: #008060;
+  font-weight: 600;
+  font-size: 16px;
+  align-self: flex-end;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.addProductBtn:hover {
+  background-color: #008060;
+  color: white;
+}
